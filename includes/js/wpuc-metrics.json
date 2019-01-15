@@ -1,0 +1,158 @@
+{
+   "metrics":{
+   		"distance":{
+   			"title":"Length / Distance Converter",
+   			"description": "Unit converter for length",
+   			"base_unit":"mm",
+   			"select_box":{
+   				"mm":"Millimeters",
+   				"cm":"Centimeters",   
+   				"m":"Meters",
+   				"km":"Kilometers",				
+   				"ft":"Feet",
+   				"in":"Inches",
+   				"yd":"Yards", 
+				"mi":"Miles",		
+   				"dam":"Decameters",
+   				"hm":"Hectometers",
+   				"dm":"Decimeters"
+   				
+   			},   			
+   			"convert_to":{
+   				"mm":"1",
+   				"cm":"10",
+   				"dm":"100",
+   				"m":"1000",
+   				"dam":"10000",
+   				"hm":"100000",
+   				"km":"1000000",
+   				"ft":"304.8",
+   				"in":"25.4",
+   				"yd":"914.4",
+   				"mi":"1609340"
+   			}
+   		},
+   		"temperature":{
+   			"title":"Temperature Converter",
+   			"description": "Unit converter for temperature",
+   			"base_unit":"C",
+   			"select_box":{
+   				"C":"Celsius",
+   				"F":"Fahrenheit",   
+   				"K":"Kelvin"
+   				
+   			},   			
+   			"convert_to":{
+   				"C":{"base":"0","ratio":"1"},
+   				"F":{"base":"32","ratio":"1.8"},
+   				"K":{"base":"273.15","ratio":"1"}
+   			}
+   		},
+   		"time":{
+   			"title":"Time Converter",
+   			"description": "Unit converter for time",
+   			"base_unit":"ms",
+   			"select_box":{
+   				"ms":"Miliseconds",
+   				"s":"Seconds",
+   				"m":"Minutes",
+   				"h":"Hours",
+   				"d":"Days",
+   				"w":"Weeks"
+   				
+   			},   			
+   			"convert_to":{
+   				"ms":"1",
+   				"s":"1000",
+   				"m":"60000",
+   				"h":"3600000",
+   				"d":86400000,
+   				"w":604800000
+   		
+   			}
+   		},
+   		"weight":{
+   			"title":"Weight Converter",
+   			"description": "Unit converter for weight",
+   			"base_unit":"mg",
+   			"select_box":{
+   				"mg":"Miligrams",
+   				"g":"Grams",
+   				"kg":"Kilograms",   				
+   				"lb":"Pounds",
+   				"oz":"Ounces",   				
+   				"dag":"Decagrams",
+   				"hg":"Hectograms",
+   				"cg":"Centigrams",
+   				"dg":"Decigrams"
+   				
+   			},   			
+   			"convert_to":{
+   				"mg":"1",
+   				"cg":"10",
+   				"dg":"100",
+   				"g":"1000",
+   				"dag":"10000",
+   				"hg":"100000",
+   				"kg":"1000000",
+   				"lb":"453592.37",
+   				"oz":"28349.5"
+   			}
+   		},
+   		"area":{
+   			"title":"Area Converter",
+   			"description": "Unit converter for area",
+   			"base_unit":"m<sup>2</sup>",
+   				"select_box":{
+   				"mm<sup>2</sup>":"Square Millimeters",
+   				"cm<sup>2</sup>":"Square Centimeters",   
+   				"m<sup>2</sup>":"Square Meters",
+   				"km<sup>2</sup>":"Square Kilometers",				
+   				"ft<sup>2</sup>":"Square Feet",
+   				"in<sup>2</sup>":"Square Inches",
+   				"yd<sup>2</sup>":"Square Yards", 
+				"mi<sup>2</sup>":"Square Miles",		
+   				"ac":"Acres",
+   				"ha":"Hectares"
+   				
+   			},   			
+   			"convert_to":{
+   				"mm<sup>2</sup>":"0.000001",
+   				"cm<sup>2</sup>":"0.0001",
+   				"m<sup>2</sup>":"1",
+   				"km<sup>2</sup>":"1000000",
+   				"ft<sup>2</sup>":"0.092903",
+   				"in<sup>2</sup>":"0.00064516",
+   				"yd<sup>2</sup>":"0.836127",
+   				"mi<sup>2</sup>":"2589990",
+   				"ac":"4046.86",
+   				"ha":"10000"
+   			}
+   		}
+   		,
+   		"speed":{
+   			"title":"Speed Converter",
+   			"description": "Unit converter for speed",
+   			"base_unit":"km/h",
+   				"select_box":{
+   				"km/h":"Kilometers / hour",
+   				"mph":"Miles / Hour",
+   				"km/s":"Kilometers / second",
+   				"mi/s":"Miles / second",
+   				"m/s":"Meters / second",
+   				"ft/s":"Feet / second",
+   				"kn":"Knots"
+   			},   			
+   			"convert_to":{
+   				"km/h":"1",
+   				"mph":"1.609",
+   				"km/s":"3,600",
+   				"mi/s":"5,794",
+   				"m/s":"3.6",
+   				"ft/s":"1.097",
+   				"kn":"1.852"
+   				
+   			}
+   		}
+   }
+}

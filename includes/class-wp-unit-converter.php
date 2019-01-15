@@ -166,8 +166,15 @@ class Wp_Unit_Converter {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_filter( 'widget_text', $plugin_admin, 'shortcode_unautop' );
-		$this->loader->add_filter( 'widget_text', $plugin_admin, 'do_shortcode' );
+		
+		global $wp_version;
+		if ( version_compare( $wp_version, '4.9', '<' ) ) {
+			$this->loader->add_filter( 'widget_text', $plugin_admin, 'shortcode_unautop' );
+			$this->loader->add_filter( 'widget_text', $plugin_admin, 'do_shortcode' );
+		}
+		
+		$this->loader->add_action( 'widgets_init', $plugin_admin, 'wpuc_load_widget' );
+
 
 	}
 
@@ -235,7 +242,7 @@ class Wp_Unit_Converter {
 	 */
 	public function wpuc_import_json() {
 
-		$metrics_array = json_decode(file_get_contents(plugins_url('includes/js/wpuc-metrics.json', __FILE__)), 'true');
+		$metrics_array = json_decode(file_get_contents(plugins_url('js/wpuc-metrics.json', __FILE__)), 'true');
 
 		return $metrics_array;
 
