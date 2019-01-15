@@ -100,4 +100,19 @@ class Wp_Unit_Converter_Public {
 
 	}
 
+	/**
+	 * Register the Ajax URL required for public-facing side of the site.
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpuc_ajax_url() {
+    	?>
+
+		<script type="text/javascript">
+		var wpuc_ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+		</script>
+
+		<?php
+	}
+
 }

@@ -56,6 +56,15 @@ class Wp_Unit_Converter {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
+	
+	/**
+	 * The json data retrieved from the file.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      object    $metrics_array.
+	 */
+	private $metrics_array;	
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -78,6 +87,7 @@ class Wp_Unit_Converter {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->wpuc_import_json();
 
 	}
 
@@ -156,6 +166,8 @@ class Wp_Unit_Converter {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_filter( 'widget_text', $plugin_admin, 'shortcode_unautop' );
+		$this->loader->add_filter( 'widget_text', $plugin_admin, 'do_shortcode' );
 
 	}
 
@@ -172,6 +184,7 @@ class Wp_Unit_Converter {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_head', $plugin_public, 'wpuc_ajax_url' );
 
 	}
 
@@ -213,6 +226,19 @@ class Wp_Unit_Converter {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	/**
+	 * Retrieves metrics mesurement values in JSON.
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpuc_import_json() {
+
+		$metrics_array = json_decode(file_get_contents(plugins_url('includes/js/wpuc-metrics.json', __FILE__)), 'true');
+
+		return $metrics_array;
+
 	}
 
 }

@@ -21,7 +21,7 @@ WP Unit Converter allows you to convert following metrics in numerous different 
         **      Kilometers
         **      Feet
         **      Inches
-	    **      Yard
+	**      Yard
         **      Miles
         **      Decameters
         **      Hectometers
@@ -63,7 +63,7 @@ WP Unit Converter allows you to convert following metrics in numerous different 
         **      Miles / second
         **      Meters / second
         **      Feet / second
-   		**      Knots
+   	**      Knots
            
 == Installation ==
 
