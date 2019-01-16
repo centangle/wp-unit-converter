@@ -15,8 +15,8 @@ class Wpuc_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'wpuc_widget',
-            __('WP Unit Calculator', 'wpuc'),
-            array('description' => __('This widget displays the WP Unit Calculator on sidebar and shows the shortcode for each metrics', 'wpuc'))
+            __('WP Unit Converter', 'wpuc'),
+            array('description' => __('This widget displays the WP Unit Converter in Widget area', 'wpuc'))
         );
     }
 
@@ -31,7 +31,7 @@ class Wpuc_Widget extends WP_Widget {
         }
 
 // This is where you run the code and display the output
-        echo __('Hello, World!', 'wpuc');
+        echo do_shortcode( '[wpuc_unit_converter]' );
         echo $args['after_widget'];
     }
 
@@ -40,7 +40,7 @@ class Wpuc_Widget extends WP_Widget {
         if (isset($instance['title'])) {
             $title = $instance['title'];
         } else {
-            $title = __('WP Unit Calculator', 'wpuc');
+            $title = __('WP Unit Converter', 'wpuc');
         }
 
 // Widget admin form

@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== WP Unit Converter ===
 Contributors: centangle, shaampk1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YVZMWLU7UJEBU&currency_code=USD&source=url
 Tags: unit converter, measurement, metrics, shortcode

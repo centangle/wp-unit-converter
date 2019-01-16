@@ -87,7 +87,6 @@ class Wp_Unit_Converter {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->wpuc_import_json();
 
 	}
 
@@ -233,19 +232,6 @@ class Wp_Unit_Converter {
 	 */
 	public function get_version() {
 		return $this->version;
-	}
-
-	/**
-	 * Retrieves metrics mesurement values in JSON.
-	 *
-	 * @since    1.0.0
-	 */
-	public function wpuc_import_json() {
-
-		$metrics_array = json_decode(file_get_contents(plugins_url('js/wpuc-metrics.json', __FILE__)), 'true');
-
-		return $metrics_array;
-
 	}
 
 }

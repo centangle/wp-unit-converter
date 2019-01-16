@@ -51,6 +51,7 @@ class Wp_Unit_Converter_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->wpuc_add_shortcode();
 
 	}
 
@@ -113,6 +114,134 @@ class Wp_Unit_Converter_Public {
 		</script>
 
 		<?php
+	}
+
+	/**
+	 * Retrieves metrics mesurement values in JSON.
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpuc_import_json() {
+
+		$metrics_array = json_decode(file_get_contents(plugins_url('../includes/js/wpuc-metrics.json', __FILE__)), 'true');
+
+		return $metrics_array;
+
+	}
+
+	/**
+	 * Register shortcode of metrics for public-facing side of the site.
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpuc_add_shortcode() {
+		add_shortcode('wpuc_unit_converter', array($this, 'wpuc_unit_converter_shortcode'));
+
+	}
+
+	/**
+	 * Callback function for add_shortcode, which will display the the metrics option for public-facing side of the site.
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpuc_unit_converter_shortcode($atts) {
+
+		$metrics_array = $this->wpuc_import_json();
+
+		extract(shortcode_atts(array(
+
+			'converter' => '',
+
+		), $atts));
+
+		$metrics = $metrics_array['metrics'];
+        ob_start();
+        echo '<pre>';
+        print_r($metrics_array);
+        echo '</pre>';
+        $objectdata = ob_get_contents();
+        ob_end_clean();
+        error_log($objectdata);
+
+		/* $show .= '<div id="oppso-converter-box">';
+
+		if ($converter == '') {
+
+			$options = '';
+
+			$i = 0;
+
+			foreach ($metrics as $key => $value) {
+
+				if ($i == 0) {
+
+					$converter = $key;
+
+				}
+
+				$i++;
+
+				$options .= '<option value="' . $key . '">' . ucfirst($key) . '</option>';
+
+			}
+
+			$show .= '<div id="converter-selection"><select class="oppso-select">' . $options . '</select></div>';
+
+		}
+
+		$converter_data = ($formulae[$converter]);
+
+		$convert_options_arr = $converter_data['select_box'];
+
+		foreach ($convert_options_arr as $key => $value) {
+
+			$convert_options .= '<option value="' . $key . '">' . $value . '</option>';
+
+		}
+
+		$show .= '<div id="oppso-converter-type"><div>' . $converter_data['title'] . '</div>';
+
+		$show .= '<div class="oppso-converter-description">' . $converter_data['description'] . '</div>';
+
+		$show .= '<div class="oppso-converter-form">
+
+
+
+			<input type="hidden" name="oppso_converter_type" value="' . $converter . '" id="oppso_converter_type"/>
+
+			<table cellspacing="3" class="oppso-form-table">
+
+					<tr><td>Value</td><td>	<input  class="oppso-input"  type="text" name="oppso_value" value="" id="oppso_value" />
+
+					</td></tr>
+
+							<tr><td width="40%">From</td><td>
+
+			<select class="oppso-select" id="oppso_from">' . $convert_options . '</select>
+
+			</td></tr>';
+
+		$show .= '<tr><td  width="40%">To</td><td>
+
+				<select class="oppso-select" id="oppso_to">' . $convert_options . '</select></td></tr>
+
+
+
+			<tr><td><input type="button" name="convert" value="Convert" id="oppso_convert"></td></tr></table>
+
+			<div id="oppso_convert_result" class="oppso-convert-result"></div>
+
+
+
+
+
+			';
+
+		$show .= '</div><div>';
+
+		return $show; */
+		echo 'centangle 2019';
+
 	}
 
 }
