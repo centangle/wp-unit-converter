@@ -76,8 +76,8 @@ class Wp_Unit_Converter {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+		if ( defined( 'WP_UNIT_CONVERTER_VERSION' ) ) {
+			$this->version = WP_UNIT_CONVERTER_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
@@ -114,6 +114,8 @@ class Wp_Unit_Converter {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-unit-converter-loader.php';
 
+		$this->loader = new Wp_Unit_Converter_Loader();
+
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
@@ -131,7 +133,17 @@ class Wp_Unit_Converter {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-unit-converter-public.php';
 
-		$this->loader = new Wp_Unit_Converter_Loader();
+		/**
+		 * The class responsible for handling ajax request for change of Metrics Units
+		 * of measurement.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-unit-converter-do-change.php';
+
+		/**
+		 * The class responsible for handling ajax request for conversion of Metrics Units
+		 * of measurement.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-unit-converter-do-convert.php';		
 
 	}
 
@@ -174,7 +186,6 @@ class Wp_Unit_Converter {
 		
 		$this->loader->add_action( 'widgets_init', $plugin_admin, 'wpuc_load_widget' );
 
-
 	}
 
 	/**
@@ -190,7 +201,16 @@ class Wp_Unit_Converter {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'wp_head', $plugin_public, 'wpuc_ajax_url' );
+
+		$wpuc_action_do_change = new Wp_Unit_Converter_Do_Change( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action('wp_ajax_nopriv_wpuc_do_change', $wpuc_action_do_change, 'wpuc_do_change');
+		$this->loader->add_action('wp_ajax_wpuc_do_change', $wpuc_action_do_change, 'wpuc_do_change');
+
+		$wpuc_action_do_convert = new Wp_Unit_Converter_Do_Convert( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action('wp_ajax_nopriv_wpuc_do_convert', $wpuc_action_do_convert, 'wpuc_do_convert');
+		$this->loader->add_action('wp_ajax_wpuc_do_convert', $wpuc_action_do_convert, 'wpuc_do_convert');
 
 	}
 

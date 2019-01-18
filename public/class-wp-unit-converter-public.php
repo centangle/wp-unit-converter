@@ -83,7 +83,7 @@ class Wp_Unit_Converter_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts( $hook ) {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,37 +96,11 @@ class Wp_Unit_Converter_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+		
+		wp_enqueue_script( 'wpuc-ajax-script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery' ), $this->version, false );
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery' ), $this->version, false );
-
-	}
-
-	/**
-	 * Register the Ajax URL required for public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function wpuc_ajax_url() {
-    	?>
-
-		<script type="text/javascript">
-		var wpuc_ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-		</script>
-
-		<?php
-	}
-
-	/**
-	 * Retrieves metrics mesurement values in JSON.
-	 *
-	 * @since    1.0.0
-	 */
-	public function wpuc_import_json() {
-
-		$metrics_array = json_decode(file_get_contents(plugins_url('../includes/js/wpuc-metrics.json', __FILE__)), 'true');
-
-		return $metrics_array;
-
+		$wpuc_ajax_nonce = wp_create_nonce( 'wpuc_ajax_nonce_text' );
+		wp_localize_script( 'wpuc-ajax-script', 'wpuc_ajax_obj', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nonce' => $wpuc_ajax_nonce ) );
 	}
 
 	/**
@@ -136,42 +110,47 @@ class Wp_Unit_Converter_Public {
 	 */
 	public function wpuc_add_shortcode() {
 		add_shortcode('wpuc_unit_converter', array($this, 'wpuc_unit_converter_shortcode'));
+	}
+
+	/**
+	 * Retrieves metrics mesurement values in JSON.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function wpuc_import_json() {
+
+		$metrics_array = json_decode(file_get_contents(plugins_url('../includes/js/wpuc-metrics.json', __FILE__)), 'true');
+
+		return $metrics_array;
 
 	}
 
 	/**
-	 * Callback function for add_shortcode, which will display the the metrics option for public-facing side of the site.
+	 * Callback function for wpuc_add_shortcode, which will display the the metrics option for public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
-	public function wpuc_unit_converter_shortcode($atts) {
+	public function wpuc_unit_converter_shortcode() {
 
-		$metrics_array = $this->wpuc_import_json();
+		$wpuc_metrics_array = self::wpuc_import_json();
 
-		extract(shortcode_atts(array(
+/* 		extract(shortcode_atts(array(
 
 			'converter' => '',
 
-		), $atts));
+		), $atts)); */
 
-		$metrics = $metrics_array['metrics'];
-        ob_start();
-        echo '<pre>';
-        print_r($metrics_array);
-        echo '</pre>';
-        $objectdata = ob_get_contents();
-        ob_end_clean();
-        error_log($objectdata);
+		$wpuc_metrics = $wpuc_metrics_array['metrics'];
 
-		/* $show .= '<div id="oppso-converter-box">';
+		$show .= '<div id="wpuc-converter-box">';
 
 		if ($converter == '') {
 
-			$options = '';
+			$wpuc_options = '';
 
 			$i = 0;
 
-			foreach ($metrics as $key => $value) {
+			foreach ($wpuc_metrics as $key => $value) {
 
 				if ($i == 0) {
 
@@ -181,67 +160,55 @@ class Wp_Unit_Converter_Public {
 
 				$i++;
 
-				$options .= '<option value="' . $key . '">' . ucfirst($key) . '</option>';
+				$wpuc_options .= '<option value="' . $key . '">' . ucfirst($key) . '</option>';
 
 			}
 
-			$show .= '<div id="converter-selection"><select class="oppso-select">' . $options . '</select></div>';
+			$show .= '<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
 
 		}
 
-		$converter_data = ($formulae[$converter]);
+		$wpuc_converter_data = ($wpuc_metrics[$converter]);
 
-		$convert_options_arr = $converter_data['select_box'];
+		$wpuc_convert_options_array = $wpuc_converter_data['select_box'];
 
-		foreach ($convert_options_arr as $key => $value) {
+		foreach ($wpuc_convert_options_array as $key => $value) {
 
-			$convert_options .= '<option value="' . $key . '">' . $value . '</option>';
+			$wpuc_convert_options .= '<option value="' . $key . '">' . $value . '</option>';
 
 		}
 
-		$show .= '<div id="oppso-converter-type"><div>' . $converter_data['title'] . '</div>';
+		$show .= '<div id="wpuc-converter-type"><div>' . $wpuc_converter_data['title'] . '</div>';
 
-		$show .= '<div class="oppso-converter-description">' . $converter_data['description'] . '</div>';
+		$show .= '<div class="wpuc-converter-description">' . $wpuc_converter_data['description'] . '</div>';
 
-		$show .= '<div class="oppso-converter-form">
+		$show .= '<div class="wpuc-converter-form">
+		
+				<input type="hidden" name="wpuc_converter_type" value="' . $converter . '" id="wpuc_converter_type"/>
 
+				<table cellspacing="3" class="wpuc-form-table">
 
+				<tr><td>Value</td><td>	<input  class="wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_value" />
 
-			<input type="hidden" name="oppso_converter_type" value="' . $converter . '" id="oppso_converter_type"/>
+				</td></tr>
 
-			<table cellspacing="3" class="oppso-form-table">
+				<tr><td width="40%">From</td><td>
 
-					<tr><td>Value</td><td>	<input  class="oppso-input"  type="text" name="oppso_value" value="" id="oppso_value" />
+				<select class="wpuc-select" id="wpuc_from">' . $wpuc_convert_options . '</select>
 
-					</td></tr>
-
-							<tr><td width="40%">From</td><td>
-
-			<select class="oppso-select" id="oppso_from">' . $convert_options . '</select>
-
-			</td></tr>';
+				</td></tr>';
 
 		$show .= '<tr><td  width="40%">To</td><td>
 
-				<select class="oppso-select" id="oppso_to">' . $convert_options . '</select></td></tr>
+				<select class="wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select></td></tr>
 
+				<tr><td><input type="button" name="convert" value="Convert" id="wpuc_convert"></td></tr></table>
 
-
-			<tr><td><input type="button" name="convert" value="Convert" id="oppso_convert"></td></tr></table>
-
-			<div id="oppso_convert_result" class="oppso-convert-result"></div>
-
-
-
-
-
-			';
+				<div id="wpuc_convert_result" class="wpuc-convert-result"></div>';
 
 		$show .= '</div><div>';
 
-		return $show; */
-		echo 'centangle 2019';
-
+		return $show;
 	}
 
 }

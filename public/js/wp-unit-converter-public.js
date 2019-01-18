@@ -30,69 +30,44 @@
    */
 
   /**
-   * Sends Ajax request with selected 'to', 'from' options, and user entered value. It displays the conversion as response handler, recieved from server.
+   * Sends Ajax request with selected 'to', 'from', and user entered value. It displays the conversion as response handler, recieved from server.
    */
 
-  $(document).ready(
-    $(document).on( "click", "#oppso_convert", function() {
+  $(document).ready(function($) {           
+    $(document).on( "click", "#wpuc_convert", function() {
+      var from = $("#wpuc_from").val();
+      var to = $("#wpuc_to").val();
+      var wpuc_value = $("#wpuc_value").val();
+      var converter_type = $("#wpuc_converter_type").val();
 
-        from = $("#oppso_from").val();
-
-        to = $("#oppso_to").val();
-
-        converter_type = $("#oppso_converter_type").val();
-
-        oppso_value = $("#oppso_value").val();
-
-        var data = {
-		
-          action: "oppso_do_convert",
-
-          from: from,
-
-          to: to,
-
-          converter_type: converter_type,
-
-		  oppso_value: oppso_value
-		
-        };
-
-        $.post(wpuc_ajaxurl, data, function(response) {
-		
-          response = JSON.parse(response);
-
-          $("#oppso_convert_result").html("Result: " + response + " " + to);
-
-		  $("#oppso_convert_result").fadeIn();
-		
+        $.post(wpuc_ajax_obj.ajax_url, {
+           _ajax_nonce: wpuc_ajax_obj.nonce,
+            action: "wpuc_do_convert",
+            from: from,
+            to: to,
+            wpuc_value: wpuc_value,
+            converter_type: converter_type
+        }, function(data) {
+          data = JSON.parse(data);
+          $("#wpuc_convert_result").html( "Result: " + data + " " + to );
+    		  $("#wpuc_convert_result").fadeIn();
         });
-      }
-    )
-  );
+    });
+});
 
   /**
    * Sends Ajax request of selected metrics type by the user. It displays the units of the selected metrics as response handler, recieved from server.
    */
 
-  $(document).ready(
-    $(document).on(
-      "change",
-      " #converter-selection .oppso-select",
-
-      function() {
-        converter_type = $(this).val();
-
-        var data = {
-          action: "oppso_do_change",
-
-          converter_type: converter_type
-        };
-
-        $.post(wpuc_ajaxurl, data, function(response) {
-          $("#oppso-converter-type").html(response);
+  $(document).ready(function($) {           
+    $("#converter-selection .wpuc-select").change(function() {
+        $.post(wpuc_ajax_obj.ajax_url, {
+           _ajax_nonce: wpuc_ajax_obj.nonce,
+            action: "wpuc_do_change",
+            converter_type: this.value
+        }, function(data) {
+          $("#wpuc-converter-type").html(data); //insert server response
         });
-      }
-    )
-  );
+    });
+});
 })(jQuery);
