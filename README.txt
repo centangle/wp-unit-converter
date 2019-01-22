@@ -15,55 +15,11 @@ WP Unit Converter allows you to convert Length/Distance, Temperature, Time, Weig
 WP Unit Converter allows you to convert following metrics in numerous different units of measurement.
 
 *   Length/Distance
-        **      Millimeters
-        **      Centimeters
-        **      Meters
-        **      Kilometers
-        **      Feet
-        **      Inches
-	**      Yard
-        **      Miles
-        **      Decameters
-        **      Hectometers
-        **      Decimeters
 *   Temperature
-        **      Celsius
-        **      Fahrenheit
-        **      Kelvin
 *   Time
-        **      Milisecond
-        **      Second
-        **      Minutes
-        **      Hours
-        **      Days
-        **      Weeks
 *   Weight
-        **      Miligrams
-        **      Grams
-        **      Kilograms
-        **      Pounds
-        **      Ounces
-        **      Decagrams
-        **      Hectograms
-        **      Centigrams
-        **      Decigrams
 *   Area
-        **      Square Millimeters
-        **      Square Centimeters
-        **      Square Meters
-        **      Square Kilometers
-        **      Square Feet
-        **      Square Inches
-        **      Square Yards
-        **      Square Miles
 *   Speed
-        **      Kilometers / hour
-        **      Miles / hour
-        **      Kilometers / second
-        **      Miles / second
-        **      Meters / second
-        **      Feet / second
-   	**      Knots
            
 == Installation ==
 
@@ -91,6 +47,12 @@ WP Unit Converter, creates a Widget Calculator under Available Widgets Area in W
 
 ## License
 WP Unit Converter is distributed under the terms of GNU GPL2.
+
+## Credits
+WP Unit Converter is based on following third-party resource:
+
+### Resources
+* Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
 
 ## Changelog
 
