@@ -134,11 +134,11 @@ class Wp_Unit_Converter_Public {
 
 		$wpuc_metrics_array = self::wpuc_import_json();
 
-/* 		extract(shortcode_atts(array(
+		extract(shortcode_atts(array(
 
 			'converter' => '',
 
-		), $atts)); */
+		), $atts));
 
 		$wpuc_metrics = $wpuc_metrics_array['metrics'];
 
@@ -164,7 +164,8 @@ class Wp_Unit_Converter_Public {
 
 			}
 
-			$show .= '<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
+			$show .= '<div class="wpuc-metric-type">Select Metrics type:</div>
+					<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
 
 		}
 
@@ -178,31 +179,30 @@ class Wp_Unit_Converter_Public {
 
 		}
 
-		$show .= '<div id="wpuc-converter-type"><div>' . $wpuc_converter_data['title'] . '</div>';
-
-		$show .= '<div class="wpuc-converter-description">' . $wpuc_converter_data['description'] . '</div>';
+		$show .= '<div id="wpuc-converter-type">';
 
 		$show .= '<div class="wpuc-converter-form">
 		
 				<input type="hidden" name="wpuc_converter_type" value="' . $converter . '" id="wpuc_converter_type"/>
 
-				<table cellspacing="3" class="wpuc-form-table">
+				<div class="wpuc-form-table">
 
-				<tr><td>Value</td><td>	<input  class="wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_value" />
+				<div class="wpuc-field">
+				<div class="wpuc-field-key">Conversion value:</div>				
+				<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_value" />
+				</div>
 
-				</td></tr>
+				<div class="wpuc-field">
+				<div class="wpuc-field-key">Convert from:</div>
+				<select class="wpuc-field-value wpuc-select" id="wpuc_from">' . $wpuc_convert_options . '</select>
+				</div>';
 
-				<tr><td width="40%">From</td><td>
+		$show .= '<div class="wpuc-field">
+				<div class="wpuc-field-key">Convert to:</div>
+				<select class="wpuc-field-value wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select>
+				</div>';
 
-				<select class="wpuc-select" id="wpuc_from">' . $wpuc_convert_options . '</select>
-
-				</td></tr>';
-
-		$show .= '<tr><td  width="40%">To</td><td>
-
-				<select class="wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select></td></tr>
-
-				<tr><td><input type="button" name="convert" value="Convert" id="wpuc_convert"></td></tr></table>
+		$show .= '<input type="button" name="convert" value="Convert" id="wpuc_convert">
 
 				<div id="wpuc_convert_result" class="wpuc-convert-result"></div>';
 

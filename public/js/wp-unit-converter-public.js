@@ -66,7 +66,7 @@
             action: "wpuc_do_change",
             converter_type: this.value
         }, function(data) {
-          $("#wpuc-converter-type").html(data); //insert server response
+          $("#wpuc-converter-type").html(data); //inserts server response
         });
     });
 });

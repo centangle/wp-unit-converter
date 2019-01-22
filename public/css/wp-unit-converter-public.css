@@ -3,53 +3,20 @@
  * included in this file.
  */
 
-#wpuc-converter-box {
-  border: 1px solid #d4d4d4;
-  padding: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+#converter-selection, .wpuc-field, input#wpuc_convert {
+  margin-bottom: 1em;
 }
 
-#wpuc-converter-box .wpuc-converter-description {
-  font-size: 11px;
-  font-style: italic;
-}
-
-#wpuc-converter-box .wpuc-form-table {
+#wpuc_convert, .wpuc-select, .wpuc-input {
+  display: block;
   width: 100%;
-  border-spacing: 5px;
-  border-collapse: separate !important;
+  margin: 0 auto;
+  padding: 1em;
 }
 
-#wpuc-converter-box .wpuc-converter-form {
-  margin-top: 10px;
-}
-
-#wpuc-converter-box .wpuc-select {
-  width: 98%;
-  padding: 3px;
-}
-
-#wpuc-converter-box .wpuc-input {
-  width: 98%;
-  padding: 2px;
-}
-
-#wpuc-converter-box .wpuc-convert-result {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #d4d4d4;
-  color: #000;
-  margin-top: 10px;
-  padding: 5px;
-  display: none;
-}
-
-#converter-selection {
-  padding-bottom: 5px;
-  padding-top: 5px;
+.wpuc-convert-result {
+  display: block;
   width: 100%;
-  margin: 0px auto;
+  margin: 0 auto;
+  text-align: center;
 }
