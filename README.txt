@@ -79,16 +79,18 @@ In the search field type "WP Unit Converter" and click Search Plugins. Once you'
 2.	Upload the entire wp-unit-converter/ directory to the /wp-content/plugins/ directory
 3.	Activate the WP Unit Converter plugin through the Plugins menu in WordPress
 
-Customize the WP Unit Converter settings at the administration menu >> Settings >> WP Unit Converter
+## How to use WP Unit Converter?
+You can use WP Unit Converter in either Post/Pages or in Widget area.
+
+### Use in Post/Pages
+Simply copy the following shortcode and paste it into your desired location.
+[wpuc_unit_converter]
+
+### Use in Widget
+WP Unit Converter, creates a Widget Calculator under Available Widgets Area in Widgets Menu, which you can drag & drop to your desired sidebar location.
 
 ## License
 WP Unit Converter is distributed under the terms of GNU GPL2.
-
-## Credits
-WP Unit Converter is based on following third-party resources:
-
-### Resources
-* Font Awesome 5 icons fonts https://fontawesome.com/, (C) Dave Gandy, [SIL Open Font License, version 1.1]
 
 ## Changelog
 
