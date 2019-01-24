@@ -79,7 +79,7 @@ class Wp_Unit_Converter_Do_Convert {
 
 		}
 
-		echo json_encode(round($wpuc_converted_value, 5));
+		echo json_encode(round($wpuc_converted_value, 2));
 
 		die();
 
