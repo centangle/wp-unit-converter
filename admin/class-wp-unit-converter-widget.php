@@ -31,7 +31,8 @@ class Wpuc_Widget extends WP_Widget {
         }
 
 // This is where you run the code and display the output
-        echo do_shortcode( '[wpuc_unit_converter]' );
+        $wpuc_do_shortcode = $instance['wpuc_shortcode'];
+        echo do_shortcode( $wpuc_do_shortcode );
         echo $args['after_widget'];
     }
 
@@ -43,6 +44,12 @@ class Wpuc_Widget extends WP_Widget {
             $title = __('WP Unit Converter', 'wpuc');
         }
 
+        if (isset($instance['wpuc_shortcode'])) {
+            $wpuc_shortcode = $instance['wpuc_shortcode'];
+        } else {
+            $wpuc_shortcode = '[wpuc_unit_converter]';
+        }
+
 // Widget admin form
         ?>
         <p>
@@ -50,8 +57,8 @@ class Wpuc_Widget extends WP_Widget {
         <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
-        <label for="<?php echo $this->get_field_id('wpuc-shortcode'); ?>"><?php _e('Shortcode:');?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('wpuc-shortcode'); ?>" name="<?php echo $this->get_field_name('wpuc-shortcode'); ?>" type="text" value="[wpuc_unit_converter]" readonly/>
+        <label for="<?php echo $this->get_field_id('wpuc_shortcode'); ?>"><?php _e('Shortcode:');?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('wpuc_shortcode'); ?>" name="<?php echo $this->get_field_name('wpuc_shortcode'); ?>" type="text" value="<?php echo esc_attr($wpuc_shortcode); ?>" />
         </p>
         <?php
     }
@@ -60,6 +67,7 @@ class Wpuc_Widget extends WP_Widget {
     public function update($new_instance, $old_instance) {
         $instance = array();
         $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+        $instance['wpuc_shortcode'] = (!empty($new_instance['wpuc_shortcode'])) ? strip_tags($new_instance['wpuc_shortcode']) : '';
         return $instance;
     }
 } // Class wpb_widget ends here

@@ -130,7 +130,7 @@ class Wp_Unit_Converter_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function wpuc_unit_converter_shortcode() {
+	public function wpuc_unit_converter_shortcode($atts) {
 
 		$wpuc_metrics_array = self::wpuc_import_json();
 
@@ -139,6 +139,17 @@ class Wp_Unit_Converter_Public {
 		$show = '';
 
 		$show .= '<div id="wpuc-converter-box">';
+
+		//$atts = '';
+
+		$args = shortcode_atts( 
+			array(
+				'converter' => '',
+			), $atts);	
+
+		$converter = $args['converter'];
+
+		if ($converter == '') {
 
 			$wpuc_options = '';
 
@@ -158,8 +169,10 @@ class Wp_Unit_Converter_Public {
 
 			}
 
-		$show .= '<div class="wpuc-metric-type">Select Metrics type:</div>
-				<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
+			$show .= '<div class="wpuc-metric-type">Select Metrics type:</div>
+					<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
+
+		}
 
 		$wpuc_converter_data = ($wpuc_metrics[$converter]);
 
