@@ -140,8 +140,6 @@ class Wp_Unit_Converter_Public {
 
 		$show .= '<div id="wpuc-converter-box">';
 
-		//$atts = '';
-
 		$args = shortcode_atts( 
 			array(
 				'converter' => '',

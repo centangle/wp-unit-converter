@@ -52,12 +52,6 @@ class Wp_Unit_Converter_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-unit-converter-widget.php';
-
 	}
 
 	/**
@@ -112,7 +106,7 @@ class Wp_Unit_Converter_Admin {
 	 * @since    1.0.0
 	 */
 	public function wpuc_load_widget() {
-		register_widget( 'wpuc_widget' );
+		register_widget( 'wp_unit_converter_widget' );
 	}
 	
 }

@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This class registers creates the Widget for WP Unit Converter in the Widget Page.
+ * This class registers the Widget for WP Unit Converter in the Widget Page.
  *
  * @link       centangle.com
  * @since      1.0.0
  *
  * @package    Wp_Unit_Converter/admin
- * @subpackage Wpuc_Widget
+ * @subpackage Wp_Unit_Converter_Widget
  */
 
-class Wpuc_Widget extends WP_Widget {
+class Wp_Unit_Converter_Widget extends WP_Widget {
 
     public function __construct() {
         parent::__construct(
-            'wpuc_widget',
+            'wp_unit_converter_widget',
             __('WP Unit Converter', 'wpuc'),
             array('description' => __('This widget displays the WP Unit Converter in Widget area', 'wpuc'))
         );

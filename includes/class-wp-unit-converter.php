@@ -120,7 +120,18 @@ class Wp_Unit_Converter {
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-unit-converter-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-unit-converter-i18n.php';		
+
+		/**
+		 * The class responsible for defining all actions that occur in the public-facing
+		 * side of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-unit-converter-widget.php';
+
+		/**
+		 * The class responsible for defining submenu in options menu.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-unit-converter-register-submenu.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -185,6 +196,10 @@ class Wp_Unit_Converter {
 		}
 		
 		$this->loader->add_action( 'widgets_init', $plugin_admin, 'wpuc_load_widget' );
+
+		$wpuc_action_register_submenu = new Wp_Unit_Converter_Register_Submenu( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action('admin_menu', $wpuc_action_register_submenu, 'wpuc_options_page');
 
 	}
 
