@@ -99,8 +99,7 @@ class Wp_Unit_Converter_Public {
 		
 		wp_enqueue_script( 'wpuc-ajax-script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery' ), $this->version, false );
 
-		$wpuc_ajax_nonce = wp_create_nonce( 'wpuc_ajax_nonce_text' );
-		wp_localize_script( 'wpuc-ajax-script', 'wpuc_ajax_obj', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nonce' => $wpuc_ajax_nonce, 'metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ) ) );
+		wp_localize_script( 'wpuc-ajax-script', 'wpuc_ajax_obj', array( 'metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ) ) );
 	}
 
 	/**

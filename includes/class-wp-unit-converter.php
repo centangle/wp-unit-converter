@@ -144,18 +144,6 @@ class Wp_Unit_Converter {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-unit-converter-public.php';
 
-		/**
-		 * The class responsible for handling ajax request for change of Metrics Units
-		 * of measurement.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-unit-converter-do-change.php';
-
-		/**
-		 * The class responsible for handling ajax request for conversion of Metrics Units
-		 * of measurement.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-unit-converter-do-convert.php';		
-
 	}
 
 	/**
@@ -198,7 +186,6 @@ class Wp_Unit_Converter {
 		$this->loader->add_action( 'widgets_init', $plugin_admin, 'wpuc_load_widget' );
 
 		$wpuc_action_register_submenu = new Wp_Unit_Converter_Register_Submenu( $this->get_plugin_name(), $this->get_version() );
-
 		$this->loader->add_action('admin_menu', $wpuc_action_register_submenu, 'wpuc_options_page');
 
 	}
@@ -216,16 +203,6 @@ class Wp_Unit_Converter {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
-		$wpuc_action_do_change = new Wp_Unit_Converter_Do_Change( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action('wp_ajax_nopriv_wpuc_do_change', $wpuc_action_do_change, 'wpuc_do_change');
-		$this->loader->add_action('wp_ajax_wpuc_do_change', $wpuc_action_do_change, 'wpuc_do_change');
-
-		$wpuc_action_do_convert = new Wp_Unit_Converter_Do_Convert( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action('wp_ajax_nopriv_wpuc_do_convert', $wpuc_action_do_convert, 'wpuc_do_convert');
-		$this->loader->add_action('wp_ajax_wpuc_do_convert', $wpuc_action_do_convert, 'wpuc_do_convert');
 
 	}
 
