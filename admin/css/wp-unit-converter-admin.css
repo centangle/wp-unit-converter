@@ -2,3 +2,16 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.wpuc_shortcode_heading {
+    margin-bottom: 0;
+}
+
+.wpuc_shortcode {
+    margin: 0;
+}
+
+.wpuc_shortcode_hr {
+    width: 6%;
+    display: inline-block;
+}

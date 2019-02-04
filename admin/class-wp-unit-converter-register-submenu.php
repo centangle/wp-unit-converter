@@ -86,12 +86,17 @@ class Wp_Unit_Converter_Register_Submenu {
 		?>
 
 		<div>
-
 		<h1>WP Unit Converter</h1>
+		</div>
 
-		</div><br />
+		<hr class="wpuc_shortcode_hr">
+		
+		<br />
 
-		<div>[wpuc_unit_converter]</div>
+		<div>
+		<h2 class="wpuc_shortcode_heading">WP Unit Converter Multiple Metrics</h2>
+		<p class="wpuc_shortcode">[wpuc_unit_converter]</p>				
+		</div>
 
 		<?php
 
@@ -100,10 +105,8 @@ class Wp_Unit_Converter_Register_Submenu {
 		?>
 
 		<div>
-		<span><strong><?php echo $value['title']; ?></span>
-
-		<span>[wpuc_unit_converter converter=<?php echo $key ?>]</span>
-
+		<h2 class="wpuc_shortcode_heading"><?php echo $value['title']; ?></h2>
+		<p class="wpuc_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</p>
 		</div>
 
 		<?php
