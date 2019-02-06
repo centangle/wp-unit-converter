@@ -115,31 +115,27 @@
         show += '<div id="wpuc-converter-type">';
 
         show += '<div class="wpuc-converter-form">' +
+        
+                  '<input type="hidden" name="wpuc_converter_type" value="' + converter + '" id="wpuc_converter_type"/>' +
+                    '<div class="wpuc-main-form">' +
+                      '<div class="wpuc-field">' +
+                        '<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_from_value" />' + 
+                        '<select class="wpuc-field-value wpuc-select" id="wpuc_from">' + wpuc_convert_options + '</select>' +
+                      '</div>';
+    
+        show +=       '<div class="wpuc-equalizer"> = </div>';
+    
+        show +=       '<div class="wpuc-field">' +
+                        '<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_to_value" />' +
+                        '<select class="wpuc-field-value wpuc-select" id="wpuc_to">' + wpuc_convert_options + '</select>' +				
+                      '</div>' +
+            
+                    '</div>';    
+    
+        show += '</div>' +
+                '</div>';
 
-            '<input type="hidden" name="wpuc_converter_type" value="' + converter + '" id="wpuc_converter_type"/>' +
-
-            '<div class="wpuc-form-table">' +
-
-            '<div class="wpuc-field">' +
-            '<div class="wpuc-field-key">Conversion value:</div>' +				
-            '<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_value" />' +
-            '</div>' +
-
-            '<div class="wpuc-field">' +
-            '<div class="wpuc-field-key">Convert from:</div>' +
-            '<select class="wpuc-field-value wpuc-select" id="wpuc_from">' + wpuc_convert_options + '</select>' +
-            '</div>';
-
-        show += '<div class="wpuc-field">' +
-            '<div class="wpuc-field-key">Convert to:</div>' +
-            '<select class="wpuc-field-value wpuc-select" id="wpuc_to">' + wpuc_convert_options + '</select>' +
-            '</div>';
-
-        show += '<input type="button" name="convert" value="Convert" id="wpuc_convert"></input>' +
-
-            '<div id="wpuc_convert_result" class="wpuc-convert-result"></div>';
-
-        show += '';
+        show += '</div>';
 
         $("#wpuc-converter-type").html(show);
 

@@ -3,24 +3,37 @@
  * included in this file.
  */
 
-#converter-selection, .wpuc-field, input#wpuc_convert {
-  margin-bottom: 1em;
+.wpuc-main-form {
+  display: flex;
+  justify-content: center;  
 }
 
-#wpuc_convert, .wpuc-select, .wpuc-input {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1em;
-}
-
-.wpuc-convert-result {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
+#converter-selection {
   text-align: center;
 }
 
-select.wpuc-select {
-  height: auto;
+#converter-selection .wpuc-select {
+  width: 80%;
+}
+
+.wpuc-field-value.wpuc-select, .wpuc-field-value.wpuc-input {
+  display: block;
+  width: 100%;
+  border-radius: 0px;
+}
+
+.wpuc-field-value.wpuc-input {
+  border-radius: 2px 2px 0px 0px;
+  line-height: 1.5;
+}
+
+.wpuc-field-value.wpuc-select {
+  padding: 5px 0px;
+  border-radius: 0px 0px 2px 2px;
+  margin-top: -1px;
+}
+
+.wpuc-equalizer {
+  margin: 1em;
+  align-self: center;
 }

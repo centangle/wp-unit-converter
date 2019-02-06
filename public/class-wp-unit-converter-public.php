@@ -166,8 +166,7 @@ class Wp_Unit_Converter_Public {
 
 			}
 
-			$show .= '<div class="wpuc-metric-type">Select Metrics type:</div>
-					<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
+			$show .= '<div id="converter-selection"><select class="wpuc-select">' . $wpuc_options . '</select></div>';
 
 		}
 
@@ -189,28 +188,24 @@ class Wp_Unit_Converter_Public {
 		
 				<input type="hidden" name="wpuc_converter_type" value="' . $converter . '" id="wpuc_converter_type"/>
 
-				<div class="wpuc-form-table">
+				<div class="wpuc-main-form">
 
 				<div class="wpuc-field">
-				<div class="wpuc-field-key">Conversion value:</div>				
-				<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_value" />
-				</div>
-
-				<div class="wpuc-field">
-				<div class="wpuc-field-key">Convert from:</div>
+				<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_from_value" />
 				<select class="wpuc-field-value wpuc-select" id="wpuc_from">' . $wpuc_convert_options . '</select>
 				</div>';
 
-		$show .= '<div class="wpuc-field">
-				<div class="wpuc-field-key">Convert to:</div>
-				<select class="wpuc-field-value wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select>
+		$show .= '<div class="wpuc-equalizer"> = </div>';
+
+		$show .= '<div class="wpuc-field">				
+				<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_to_value" />
+				<select class="wpuc-field-value wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select>				
+				</div>
+				
 				</div>';
 
-		$show .= '<input type="button" name="convert" value="Convert" id="wpuc_convert">
 
-				<div id="wpuc_convert_result" class="wpuc-convert-result"></div>';
-
-		$show .= '</div><div>';
+		$show .= '</div></div>';
 
 		return $show;
 	}
