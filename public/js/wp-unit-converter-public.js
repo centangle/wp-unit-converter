@@ -110,35 +110,8 @@
           wpuc_convert_options += '<option value="' + key + '">' + value + '</option>';
         });
 
-        var show = '';
-
-        show += '<div id="wpuc-converter-type">';
-
-        show += '<div class="wpuc-converter-form">' +
+        $(".wpuc-field-value.wpuc-select").html(wpuc_convert_options);
         
-                  '<input type="hidden" name="wpuc_converter_type" value="' + converter + '" id="wpuc_converter_type"/>' +
-                    '<div class="wpuc-main-form">' +
-                      '<div class="wpuc-field">' +
-                        '<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_from_value" />' + 
-                        '<select class="wpuc-field-value wpuc-select" id="wpuc_from">' + wpuc_convert_options + '</select>' +
-                      '</div>';
-    
-        show +=       '<div class="wpuc-equalizer"> = </div>';
-    
-        show +=       '<div class="wpuc-field">' +
-                        '<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_to_value" />' +
-                        '<select class="wpuc-field-value wpuc-select" id="wpuc_to">' + wpuc_convert_options + '</select>' +				
-                      '</div>' +
-            
-                    '</div>';    
-    
-        show += '</div>' +
-                '</div>';
-
-        show += '</div>';
-
-        $("#wpuc-converter-type").html(show);
-
       }
     });
 });
