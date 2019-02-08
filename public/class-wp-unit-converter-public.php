@@ -97,9 +97,9 @@ class Wp_Unit_Converter_Public {
 		 * class.
 		 */
 		
-		wp_enqueue_script( 'wpuc-ajax-script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'wpuc_ajax_script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery' ), $this->version, false );
 
-		wp_localize_script( 'wpuc-ajax-script', 'wpuc_ajax_obj', array( 'metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ) ) );
+		wp_localize_script( 'wpuc_ajax_script', 'wpuc_ajax_obj', array( 'metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ) ) );
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Wp_Unit_Converter_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function wpuc_import_json() {
+	public function wpuc_import_json() {
 
 		$metrics_array = json_decode(file_get_contents(plugins_url('../includes/js/wpuc-metrics.json', __FILE__)), 'true');
 
@@ -131,7 +131,7 @@ class Wp_Unit_Converter_Public {
 	 */
 	public function wpuc_unit_converter_shortcode($atts) {
 
-		$wpuc_metrics_array = self::wpuc_import_json();
+		$wpuc_metrics_array = $this->wpuc_import_json();
 
 		$wpuc_metrics = $wpuc_metrics_array['metrics'];
 
