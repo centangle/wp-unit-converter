@@ -3,17 +3,23 @@
  * included in this file.
  */
 
+#wpuc-converter-box {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
 .wpuc-main-form {
   display: flex;
-  justify-content: center;  
+  justify-content: space-around;  
 }
 
 #converter-selection {
+  margin-bottom: 1em;
   text-align: center;
 }
 
 #converter-selection .wpuc-select {
-  width: 80%;
+  width: 100%;
 }
 
 .wpuc-field-value.wpuc-select, .wpuc-field-value.wpuc-input {
