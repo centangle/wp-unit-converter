@@ -125,8 +125,8 @@
           wpuc_convert_options += '<option value="' + key + '">' + value + '</option>';
         });
 
-        $("#wpuc_from_value").val("");
-        $("#wpuc_to_value").val("");
+        $("#wpuc_from_value").val(0.0);
+        $("#wpuc_to_value").val(0.0);
         $(".wpuc-field-value.wpuc-select").html(wpuc_convert_options);
 
       }

@@ -13,6 +13,10 @@
   justify-content: space-around;  
 }
 
+.wpuc-main-form_vertical {
+  flex-direction: column;
+}
+
 #converter-selection {
   margin-bottom: 1em;
   text-align: center;
@@ -42,4 +46,8 @@
 .wpuc-equalizer {
   margin: 1em;
   align-self: center;
+}
+
+.wpuc-equalizer_vertical {
+  margin: 0.5em 1em;
 }
