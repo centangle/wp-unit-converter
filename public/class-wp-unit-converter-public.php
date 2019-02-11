@@ -97,7 +97,9 @@ class Wp_Unit_Converter_Public {
 		 * class.
 		 */
 		
-		wp_enqueue_script( 'wpuc_ajax_script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'wpuc_math_js', plugin_dir_url( __FILE__ ) . 'js/math.min.js', array( 'jquery' ), $this->version, false );
+
+		wp_enqueue_script( 'wpuc_ajax_script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery', 'wpuc_math_js' ), $this->version, false );
 
 		wp_localize_script( 'wpuc_ajax_script', 'wpuc_ajax_obj', array( 'wpuc_metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ), 'wpuc_plugin_active' => class_exists( 'wp_unit_converter' ) ) );
 	}

@@ -35,6 +35,7 @@
      * Sends Ajax request for json file. Retrieves user selected and entered values from field form. Perofrms conversion and displays the result.
      */
 
+
     // get new value of wpuc_from_value (input field)
     $('#wpuc_from_value').keyup(function() {
       var wpuc_value = $(this).val();
@@ -55,10 +56,20 @@
       wpuc_input_from(wpuc_value, wpuc_from, wpuc_to, wpuc_converter_type);
     });
 
+    // get new value of wpuc_to (select option)
+    $('#wpuc_to').on('change', function() {
+      var wpuc_value = $('#wpuc_from_value').val();
+      var wpuc_from = $('#wpuc_from').val();
+      var wpuc_to = $('#wpuc_to').val();
+      var wpuc_converter_type = $('#converter-selection .wpuc-select').val();
+      
+      wpuc_input_from(wpuc_value, wpuc_from, wpuc_to, wpuc_converter_type);
+    });
+
     // Callback function for 'from field' values change
     function wpuc_input_from(wpuc_value, wpuc_from, wpuc_to, wpuc_converter_type) {
 
-      $.ajax({
+/*       $.ajax({
         url: wpuc_ajax_obj.wpuc_metrics_json,
         type: "POST",
         dataType: "json",
@@ -74,7 +85,6 @@
         var wpuc_converter_data = wpuc_metrics[wpuc_converter_type];
         var wpuc_converter_base_unit = wpuc_converter_data['base_unit'];
         var wpuc_converter_to = wpuc_converter_data['convert_to'];
-        var wpuc_converted_value;
 
         if (wpuc_converter_type != 'temperature') {
 
@@ -86,14 +96,24 @@
               
         }
 
+
+
+
+      } */
+
+      //if ( wpuc_from !== wpuc_to ) {
+
         function toFixed(num, fixed) {
           var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
           return num.toString().match(re)[0];
         }
 
-        $('#wpuc_to_value').val( toFixed( wpuc_converted_value, 2 ) );
+        var wpuc_converted_value;
+        wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_from), wpuc_to);
+  
+        $('#wpuc_to_value').val( toFixed(wpuc_converted_value, 2) );
 
-      }
+      //}
 
     }
 
@@ -107,20 +127,10 @@
       wpuc_input_to(wpuc_value, wpuc_from, wpuc_to, wpuc_converter_type);
     });
   
-    // get new value of wpuc_to (select option)
-    $('#wpuc_to').on('change', function() {
-      var wpuc_value = $('#wpuc_to_value').val();
-      var wpuc_from = $('#wpuc_from').val();
-      var wpuc_to = $('#wpuc_to').val();
-      var wpuc_converter_type = $('#converter-selection .wpuc-select').val();
-      
-      wpuc_input_to(wpuc_value, wpuc_from, wpuc_to, wpuc_converter_type);
-    });
-
     // Callback function for 'to field' values change
     function wpuc_input_to(wpuc_value, wpuc_from, wpuc_to, wpuc_converter_type) {
 
-      $.ajax({
+/*      $.ajax({
         url: wpuc_ajax_obj.wpuc_metrics_json,
         type: "POST",
         dataType: "json",
@@ -140,11 +150,11 @@
 
         if (wpuc_converter_type != 'temperature') {
 
-          wpuc_converted_value = wpuc_value * wpuc_converter_to[wpuc_from] * wpuc_converter_to[wpuc_converter_base_unit] / wpuc_converter_to[wpuc_to];
+          wpuc_converted_value = wpuc_value * wpuc_converter_to[wpuc_to] * wpuc_converter_to[wpuc_converter_base_unit] / wpuc_converter_to[wpuc_from];
     
         } else {
 
-          wpuc_converted_value = ((wpuc_value - wpuc_converter_to[wpuc_from]['base']) / wpuc_converter_to[wpuc_from]['ratio']) * wpuc_converter_to[wpuc_to]['ratio'] + wpuc_converter_to[wpuc_to]['base'];
+          wpuc_converted_value = ((wpuc_value - wpuc_converter_to[wpuc_to]['base']) / wpuc_converter_to[wpuc_to]['ratio']) * wpuc_converter_to[wpuc_from]['ratio'] + wpuc_converter_to[wpuc_from]['base'];
               
         }
 
@@ -153,9 +163,22 @@
           return num.toString().match(re)[0];
         }
 
-        $('#wpuc_from_value').val( toFixed( wpuc_converted_value, 2 ) );
 
-      }
+      } */
+
+      //if ( wpuc_from !== wpuc_to ) {
+
+        function toFixed(num, fixed) {
+          var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+          return num.toString().match(re)[0];
+        }
+
+        var wpuc_converted_value;
+        wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_from), wpuc_to);
+  
+        $('#wpuc_from_value').val( toFixed(wpuc_converted_value, 2) );
+
+      //}
 
     }
 
@@ -188,6 +211,8 @@
           wpuc_convert_options += '<option value="' + key + '">' + value + '</option>';
         });
 
+        $("#wpuc_from_value").val("");
+        $("#wpuc_to_value").val("");
         $(".wpuc-field-value.wpuc-select").html(wpuc_convert_options);
 
       }

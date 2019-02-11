@@ -35,17 +35,17 @@
    		"temperature":{
    			"title":"Temperature Converter",
    			"description": "Unit converter for temperature",
-   			"base_unit":"C",
+   			"base_unit":"celsius",
    			"select_box":{
-   				"C":"Celsius",
-   				"F":"Fahrenheit",   
-   				"K":"Kelvin"
+   				"celsius":"Celsius",
+   				"fahrenheit":"Fahrenheit",   
+   				"kelvin":"Kelvin"
    				
    			},   			
    			"convert_to":{
-   				"C":{"base":"0","ratio":"1"},
-   				"F":{"base":"32","ratio":"1.8"},
-   				"K":{"base":"273.15","ratio":"1"}
+   				"celsius":{"base":"0","ratio":"1"},
+   				"fahrenheit":{"base":"32","ratio":"1.8"},
+   				"kelvin":{"base":"273.15","ratio":"1"}
    			}
    		},
    		"time":{
@@ -55,19 +55,19 @@
    			"select_box":{
    				"ms":"Miliseconds",
    				"s":"Seconds",
-   				"m":"Minutes",
+   				"minutes":"Minutes",
    				"h":"Hours",
-   				"d":"Days",
-   				"w":"Weeks"
+   				"days":"Days",
+   				"weeks":"Weeks"
    				
    			},   			
    			"convert_to":{
    				"ms":"1",
    				"s":"1000",
-   				"m":"60000",
+   				"minutes":"60000",
    				"h":"3600000",
-   				"d":86400000,
-   				"w":604800000
+   				"days":86400000,
+   				"weeks":604800000
    		
    			}
    		},
@@ -102,31 +102,27 @@
    		"area":{
    			"title":"Area Converter",
    			"description": "Unit converter for area",
-   			"base_unit":"m<sup>2</sup>",
+   			"base_unit":"sqmil",
    				"select_box":{
-   				"mm<sup>2</sup>":"Square Millimeters",
-   				"cm<sup>2</sup>":"Square Centimeters",   
-   				"m<sup>2</sup>":"Square Meters",
-   				"km<sup>2</sup>":"Square Kilometers",				
-   				"ft<sup>2</sup>":"Square Feet",
-   				"in<sup>2</sup>":"Square Inches",
-   				"yd<sup>2</sup>":"Square Yards", 
-				"mi<sup>2</sup>":"Square Miles",		
-   				"ac":"Acres",
-   				"ha":"Hectares"
+   				"sqmil":"Square Millimeters",
+   				"m2":"Square Meters",
+   				"sqft":"Square Feet",
+   				"sqin":"Square Inches",
+   				"sqyd":"Square Yards", 
+				"sqmi":"Square Miles",		
+   				"acre":"Acres",
+   				"hectare":"Hectares"
    				
    			},   			
    			"convert_to":{
-   				"mm<sup>2</sup>":"0.000001",
-   				"cm<sup>2</sup>":"0.0001",
-   				"m<sup>2</sup>":"1",
-   				"km<sup>2</sup>":"1000000",
-   				"ft<sup>2</sup>":"0.092903",
-   				"in<sup>2</sup>":"0.00064516",
-   				"yd<sup>2</sup>":"0.836127",
-   				"mi<sup>2</sup>":"2589990",
-   				"ac":"4046.86",
-   				"ha":"10000"
+   				"sqmil":"0.000001",
+   				"m2":"1",
+   				"sqft":"0.092903",
+   				"sqin":"0.00064516",
+   				"sqyd":"0.836127",
+   				"sqmi":"2589990",
+   				"acre":"4046.86",
+   				"hectare":"10000"
    			}
    		}
    		,
@@ -136,21 +132,19 @@
    			"base_unit":"km/h",
    				"select_box":{
    				"km/h":"Kilometers / hour",
-   				"mph":"Miles / Hour",
+   				"miles/h":"Miles / Hour",
    				"km/s":"Kilometers / second",
-   				"mi/s":"Miles / second",
-   				"m/s":"Meters / second",
-   				"ft/s":"Feet / second",
-   				"kn":"Knots"
+   				"miles/s":"Miles / second",
+   				"meters/s":"Meters / second",
+   				"feet/s":"Feet / second"
    			},   			
    			"convert_to":{
    				"km/h":"1",
-   				"mph":"1.609",
+   				"miles/h":"1.609",
    				"km/s":"3,600",
-   				"mi/s":"5,794",
-   				"m/s":"3.6",
-   				"ft/s":"1.097",
-   				"kn":"1.852"
+   				"miles/s":"5,794",
+   				"meters/s":"3.6",
+   				"feet/s":"1.097"
    				
    			}
    		}
