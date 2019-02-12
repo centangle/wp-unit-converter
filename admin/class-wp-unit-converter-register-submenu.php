@@ -13,8 +13,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
+ * Registers the submenu page for plugin under Options Menu.
  *
  * @package    Wp_Unit_Converter
  * @subpackage Wp_Unit_Converter/admin
@@ -55,7 +54,7 @@ class Wp_Unit_Converter_Register_Submenu {
 	}
 
 	/**
-	 * Register and Load the Widget.
+	 * Registers Page in Options Menu.
 	 *
 	 * @since    1.0.0
 	 */
@@ -65,8 +64,8 @@ class Wp_Unit_Converter_Register_Submenu {
 			'WP Unit Converter', 
 			'WP Unit Converter', 
 			'manage_options', 
-			__FILE__, 
-			array($this, 'wpuc_submenu_options')
+			'wpuc_options_submenu_page', 
+			array($this, 'wpuc_options_submenu_page_callback')
 		);
 
 	}
@@ -77,41 +76,30 @@ class Wp_Unit_Converter_Register_Submenu {
 	 * @since    1.0.0
 	 */
 
-	public function wpuc_submenu_options() {
+	public function wpuc_options_submenu_page_callback() {
 
-		$wpuc_metrics_array = Wp_Unit_Converter_Public::wpuc_import_json();
-
-		$wpuc_metrics = $wpuc_metrics_array['metrics'];
-
+		// check if user is allowed access
+		if ( ! current_user_can( 'manage_options' ) ) { 
+			return;
+		};
+	
 		?>
+		<form action='options.php' method='post'>
 
-		<div>
 		<h1>WP Unit Converter</h1>
-		</div>
 
 		<hr class="wpuc_shortcode_hr">
 		
 		<br />
 
-		<div>
-		<h2 class="wpuc_shortcode_heading">WP Unit Converter Multiple Metrics</h2>
-		<pre class="wpuc_shortcode">[wpuc_unit_converter]</pre>
-		</div>
+        <?php
+        settings_fields( 'wpuc_options_submenu_page_reg_settings' );
+        do_settings_sections( 'wpuc_options_submenu_page' );
+        submit_button();
+        ?>
 
+    	</form>
 		<?php
-
-		foreach ($wpuc_metrics as $key => $value) {
-
-		?>
-
-		<div>
-		<h2 class="wpuc_shortcode_heading"><?php echo $value['title']; ?></h2>
-		<pre class="wpuc_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</pre>
-		</div>
-
-		<?php
-		
-		}
 
 	}
 	

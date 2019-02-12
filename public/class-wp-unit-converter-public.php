@@ -118,7 +118,7 @@ class Wp_Unit_Converter_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function wpuc_import_json() {
+	public static function wpuc_import_json() {
 
 		$metrics_array = json_decode(file_get_contents(plugins_url('../includes/js/wpuc-metrics.json', __FILE__)), 'true');
 
@@ -133,7 +133,7 @@ class Wp_Unit_Converter_Public {
 	 */
 	public function wpuc_unit_converter_shortcode($atts) {
 
-		$wpuc_metrics_array = $this->wpuc_import_json();
+		$wpuc_metrics_array = Wp_Unit_Converter_Public::wpuc_import_json();
 
 		$wpuc_metrics = $wpuc_metrics_array['metrics'];
 
