@@ -8,22 +8,49 @@
     display: inline-block;
 }
 
+#wpuc_submenu_page tbody tr th {
+    display: none;
+}
+
 /*
  * Shortcode Fields
  */
 
-.wpuc_shortcode_table th, .wpuc_shortcode_table td {
-    display: inline-block;
+.wpuc_shortcode_general {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    border: 1px solid gray;
+    margin: 0 auto;
 }
 
-.wpuc_shortcode_table {
-    border: 1px solid grey;
+.wpuc_shortcode_general_heading, .wpuc_shortcode_specific_heading {
+    margin: 0px;
+    border-bottom: 1px solid gray;
+    padding: .5em;
 }
 
-
-.wpuc_shortcode {
-    margin: 0 0 1em 0;
+.wpuc_shortcode_general_shortcode, .wpuc_shortcode_specific_shortcode {
+    padding: 1em;
 }
+
+.wpuc_shortcode_specifics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.wpuc_shortcode_specific {
+    display: flex;
+    margin: 1em 0px;
+    justify-content: space-between;
+    width: 400px;
+    border: 1px solid gray;
+    flex-flow: column wrap;
+    text-align: center;
+    border: 1px solid gray;
+}
+
 
 /*
  * Orientation Fields

@@ -101,18 +101,12 @@ class Wp_Unit_Converter_Register_Settings {
 		<h3 class="wpuc_shortcode_heading">WP Unit Converter Shorcodes</h3>
 		<h3 class="wpuc_shortcode_subheading">Choose any Metrics by shortcode to Display</h3>
 
-		<table class="wpuc_shortcode_table">
+			<div class="wpuc_shortcode_general">
+					<h4 class="wpuc_shortcode_general_heading">WP Unit Converter Multiple Metrics</h4>
+					<pre class="wpuc_shortcode_general_shortcode">[wpuc_unit_converter]</pre>
+			</div>
 
-		<div>
-			<tr>
-				<th>
-					<h4 class="wpuc_shortcode_heading">WP Unit Converter Multiple Metrics</h4>
-				</th>
-				<td>
-					<pre class="wpuc_shortcode">[wpuc_unit_converter]</pre>
-				</td>
-			</tr>
-		</div>
+			<div class="wpuc_shortcode_specifics">
 
 		<?php
 
@@ -120,16 +114,10 @@ class Wp_Unit_Converter_Register_Settings {
 
 		?>
 
-		<div>
-			<tr>
-				<th>
-					<h4 class="wpuc_shortcode_heading"><?php echo $value['title']; ?></h4>
-				</th>
-				<td>
-					<pre class="wpuc_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</pre>
-				</td>
-			</tr>
-		</div>
+			<div class="wpuc_shortcode_specific">
+					<h4 class="wpuc_shortcode_specific_heading"><?php echo $value['title']; ?></h4>
+					<pre class="wpuc_shortcode_specific_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</pre>
+			</div>
 
 		<?php
 		
@@ -137,7 +125,8 @@ class Wp_Unit_Converter_Register_Settings {
 
 		?>
 
-		</table>
+				</div>
+
 
 		<?php
 	}
