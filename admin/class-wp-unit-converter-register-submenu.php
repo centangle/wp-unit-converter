@@ -86,6 +86,7 @@ class Wp_Unit_Converter_Register_Submenu {
 		?>
 		<form action='options.php' method='post'>
 
+		<div id="wpuc_submenu_page">
 		<h1>WP Unit Converter</h1>
 
 		<hr class="wpuc_shortcode_hr">
@@ -97,6 +98,8 @@ class Wp_Unit_Converter_Register_Submenu {
         do_settings_sections( 'wpuc_options_submenu_page' );
         submit_button();
         ?>
+
+		</div> <!-- wpuc_submenu_page -->
 
     	</form>
 		<?php

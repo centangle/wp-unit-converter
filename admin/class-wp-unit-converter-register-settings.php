@@ -83,7 +83,7 @@ class Wp_Unit_Converter_Register_Settings {
 		add_settings_field(
 			'wpuc_options_submenu_page_field_orientation',
 			'',
-			'wpuc_options_submenu_page_field_orientation_render_callback',
+			array($this, 'wpuc_options_submenu_page_field_orientation_render_callback'),
 			'wpuc_options_submenu_page',
 			'wpuc_options_submenu_page_section'
 		);
@@ -92,25 +92,26 @@ class Wp_Unit_Converter_Register_Settings {
 
 	public function wpuc_options_submenu_page_field_shortcode_render_callback() {
 
-		echo '<h1> It is Working! </h1>';
-
 		$wpuc_metrics_array = Wp_Unit_Converter_Public::wpuc_import_json();
 
 		$wpuc_metrics = $wpuc_metrics_array['metrics'];
 
 		?>
 
-		<div>
-		<h1>WP Unit Converter</h1>
-		</div>
+		<h3 class="wpuc_shortcode_heading">WP Unit Converter Shorcodes</h3>
+		<h3 class="wpuc_shortcode_subheading">Choose any Metrics by shortcode to Display</h3>
 
-		<hr class="wpuc_shortcode_hr">
-		
-		<br />
+		<table class="wpuc_shortcode_table">
 
 		<div>
-		<h2 class="wpuc_shortcode_heading">WP Unit Converter Multiple Metrics</h2>
-		<pre class="wpuc_shortcode">[wpuc_unit_converter]</pre>
+			<tr>
+				<th>
+					<h4 class="wpuc_shortcode_heading">WP Unit Converter Multiple Metrics</h4>
+				</th>
+				<td>
+					<pre class="wpuc_shortcode">[wpuc_unit_converter]</pre>
+				</td>
+			</tr>
 		</div>
 
 		<?php
@@ -120,18 +121,52 @@ class Wp_Unit_Converter_Register_Settings {
 		?>
 
 		<div>
-		<h2 class="wpuc_shortcode_heading"><?php echo $value['title']; ?></h2>
-		<pre class="wpuc_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</pre>
+			<tr>
+				<th>
+					<h4 class="wpuc_shortcode_heading"><?php echo $value['title']; ?></h4>
+				</th>
+				<td>
+					<pre class="wpuc_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</pre>
+				</td>
+			</tr>
 		</div>
 
 		<?php
 		
 		}
 
+		?>
+
+		</table>
+
+		<?php
 	}
 
 	public function wpuc_options_submenu_page_field_orientation_render_callback() {
-		return;
+		$wpuc_options = get_option( 'wpuc_options' );
+
+		?>
+		<div>
+			<h3 class="wpuc_orientation_heading">WP Unit Converter Orientation</h3>
+			<h3 class="wpuc_orientation_subheading">Choose between Horizontal or Vertical Display</h3>
+
+			<div class="wpuc_orientation_options">
+
+				<div class="wpuc_orientation_option">
+					<input type="radio" name='wpuc_options[wpuc_orientation]' <?php checked( 'horizontal', $wpuc_options['wpuc_orientation'], true ); ?> checked Value="horizontal" />
+					<div class="wpuc_orientation_horizontal"></div>
+				</div> <!-- wpuc_orientation_option -->
+
+				<div class="wpuc_orientation_option">
+					<input type="radio" name='wpuc_options[wpuc_orientation]' <?php checked( 'vertical', $wpuc_options['wpuc_orientation'], true ); ?> Value="vertical" />
+					<div class="wpuc_orientation_vertical"></div>
+				</div> <!-- wpuc_orientation_option -->
+
+			</div> <!-- wpuc_orientation_options -->
+
+		<div>
+		
+		<?php		
 	}
 	
 }

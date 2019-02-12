@@ -3,15 +3,63 @@
  * included in this file.
  */
 
-.wpuc_shortcode_heading {
-    margin-bottom: 0;
-}
-
-.wpuc_shortcode {
-    margin: 0;
-}
-
 .wpuc_shortcode_hr {
     width: 6%;
     display: inline-block;
+}
+
+/*
+ * Shortcode Fields
+ */
+
+.wpuc_shortcode_table th, .wpuc_shortcode_table td {
+    display: inline-block;
+}
+
+.wpuc_shortcode_table {
+    border: 1px solid grey;
+}
+
+
+.wpuc_shortcode {
+    margin: 0 0 1em 0;
+}
+
+/*
+ * Orientation Fields
+ */
+
+ .wpuc_shortcode_heading, .wpuc_orientation_heading {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.wpuc_shortcode_subheading, .wpuc_orientation_subheading {
+    font-style: italic;
+    font-size: smaller;
+    font-weight: 400;
+    margin-top: 0px;
+}
+
+.wpuc_orientation_options {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.wpuc_orientation_option {
+    display: flex;
+    align-items: center;
+}
+
+.wpuc_orientation_horizontal {
+    width: 50px;
+    height: 70px;
+    background-color: lightgray;
+}
+
+.wpuc_orientation_vertical {
+    width: 70px;
+    height: 50px;
+    background-color: lightgray;
 }

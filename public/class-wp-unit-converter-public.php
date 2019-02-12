@@ -101,7 +101,9 @@ class Wp_Unit_Converter_Public {
 
 		wp_enqueue_script( 'wpuc_ajax_script', plugin_dir_url( __FILE__ ) . 'js/wp-unit-converter-public.js', array( 'jquery', 'wpuc_math_js' ), $this->version, false );
 
-		wp_localize_script( 'wpuc_ajax_script', 'wpuc_ajax_obj', array( 'wpuc_metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ), 'wpuc_plugin_active' => class_exists( 'wp_unit_converter' ) ) );
+		$wpuc_options = get_option( 'wpuc_options' );
+
+		wp_localize_script( 'wpuc_ajax_script', 'wpuc_js_obj', array( 'wpuc_metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ), 'wpuc_plugin_active' => class_exists( 'wp_unit_converter' ), 'wpuc_orientation' => $wpuc_options['wpuc_orientation'] ) );
 	}
 
 	/**

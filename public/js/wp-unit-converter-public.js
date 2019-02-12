@@ -71,7 +71,7 @@
         var wpuc_converted_value;
         wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_from), wpuc_to);
   
-        $('#wpuc_to_value').val( wpuc_converted_value.toPrecision(2) );
+        $('#wpuc_to_value').val( wpuc_converted_value.toPrecision(4) );
 
     }
 
@@ -90,7 +90,7 @@
         var wpuc_converted_value;
         wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_to), wpuc_from);
   
-        $('#wpuc_from_value').val( wpuc_converted_value.toPrecision(2) );
+        $('#wpuc_from_value').val( wpuc_converted_value.toPrecision(4) );
 
     }
 
@@ -103,7 +103,7 @@
     $("#converter-selection .wpuc-select").change(function() {
       var _this = this.value;
       $.ajax({
-        url: wpuc_ajax_obj.wpuc_metrics_json,
+        url: wpuc_js_obj.wpuc_metrics_json,
         type: "GET",
         dataType: "json",
         success: displayUnits,
@@ -125,11 +125,23 @@
           wpuc_convert_options += '<option value="' + key + '">' + value + '</option>';
         });
 
-        $("#wpuc_from_value").val(0.0);
-        $("#wpuc_to_value").val(0.0);
+        $("#wpuc_from_value").val("");
+        $("#wpuc_to_value").val("");
         $(".wpuc-field-value.wpuc-select").html(wpuc_convert_options);
 
       }
     });
+
+    /**
+    * 
+    * Changes Plugin Orientation based on admin user selection.
+    * 
+    */
+
+    if ( 'vertical' == wpuc_js_obj.wpuc_orientation ) {
+      $('.wpuc-main-form').addClass('wpuc-main-form_vertical');
+      $('.wpuc-equalizer').addClass('wpuc-equalizer_vertical');
+    }
+
   });
 })(jQuery);
