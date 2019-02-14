@@ -80,13 +80,13 @@
 }
 
 .wpuc_orientation_horizontal {
-    width: 50px;
-    height: 70px;
+    width: 70px;
+    height: 50px;
     background-color: lightgray;
 }
 
 .wpuc_orientation_vertical {
-    width: 70px;
-    height: 50px;
+    width: 50px;
+    height: 70px;
     background-color: lightgray;
 }

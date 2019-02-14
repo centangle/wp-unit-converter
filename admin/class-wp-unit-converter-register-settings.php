@@ -142,13 +142,13 @@ class Wp_Unit_Converter_Register_Settings {
 			<div class="wpuc_orientation_options">
 
 				<div class="wpuc_orientation_option">
-					<input type="radio" name='wpuc_options[wpuc_orientation]' <?php checked( 'horizontal', $wpuc_options['wpuc_orientation'], true ); ?> checked Value="horizontal" />
-					<div class="wpuc_orientation_horizontal"></div>
+					<input type="radio" name='wpuc_options[wpuc_orientation]' <?php checked( 'vertical', $wpuc_options['wpuc_orientation'], true ); ?> Value="vertical" />
+					<div class="wpuc_orientation_vertical"></div>
 				</div> <!-- wpuc_orientation_option -->
 
 				<div class="wpuc_orientation_option">
-					<input type="radio" name='wpuc_options[wpuc_orientation]' <?php checked( 'vertical', $wpuc_options['wpuc_orientation'], true ); ?> Value="vertical" />
-					<div class="wpuc_orientation_vertical"></div>
+					<input type="radio" name='wpuc_options[wpuc_orientation]' <?php checked( 'horizontal', $wpuc_options['wpuc_orientation'], true ); echo ( ( get_option( 'wpuc_options' ) ) ? '' : 'checked'); ?> Value="horizontal" />
+					<div class="wpuc_orientation_horizontal"></div>
 				</div> <!-- wpuc_orientation_option -->
 
 			</div> <!-- wpuc_orientation_options -->
