@@ -69,10 +69,21 @@
     function wpuc_input_from(wpuc_value, wpuc_from, wpuc_to) {
 
         var wpuc_converted_value;
+        var wpuc_temperature = $("#converter-selection .wpuc-select").val();
         wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_from), wpuc_to);
+        wpuc_converted_value = Number( wpuc_converted_value.toPrecision(14) );
   
-        $('#wpuc_to_value').val( wpuc_converted_value.toPrecision(4) );
+        if ( 0 == wpuc_converted_value ) {
+          $('#wpuc_to_value').val( '' );
+        } else {
+          $('#wpuc_to_value').val( wpuc_converted_value );
+        }
 
+        if ( 'temperature' == wpuc_temperature ) {
+          if ( '' == wpuc_value ) {
+            $('#wpuc_to_value').val( '' );
+          }
+        }
     }
 
     // get new value of wpuc_to_value (input field)
@@ -86,12 +97,23 @@
   
     // Callback function for 'to field' values change
     function wpuc_input_to(wpuc_value, wpuc_from, wpuc_to) {
-
-        var wpuc_converted_value;
-        wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_to), wpuc_from);
   
-        $('#wpuc_from_value').val( wpuc_converted_value.toPrecision(4) );
+        var wpuc_converted_value;
+        var wpuc_temperature = $("#converter-selection .wpuc-select").val();
+        wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_to), wpuc_from);
+        wpuc_converted_value = Number( wpuc_converted_value.toPrecision(14) );
+  
+        if ( 0 == wpuc_converted_value ) {
+          $('#wpuc_from_value').val( '' );
+        } else {
+          $('#wpuc_from_value').val( wpuc_converted_value );
+        }
 
+        if ( 'temperature' == wpuc_temperature ) {
+          if ( '' == wpuc_value ) {
+            $('#wpuc_from_value').val( '' );
+          }
+        }
     }
 
     /**

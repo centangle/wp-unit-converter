@@ -195,14 +195,14 @@ class Wp_Unit_Converter_Public {
 				<div class="wpuc-main-form">
 
 				<div class="wpuc-field">
-				<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_from_value" />
+				<input  class="wpuc-field-value wpuc-input" maxlength="16" type="text" name="wpuc_value" value="" id="wpuc_from_value" />
 				<select class="wpuc-field-value wpuc-select" id="wpuc_from">' . $wpuc_convert_options . '</select>
 				</div>';
 
 		$show .= '<div class="wpuc-equalizer"> = </div>';
 
 		$show .= '<div class="wpuc-field">				
-				<input  class="wpuc-field-value wpuc-input"  type="text" name="wpuc_value" value="" id="wpuc_to_value" />
+				<input  class="wpuc-field-value wpuc-input" maxlength="16" type="text" name="wpuc_value" value="" id="wpuc_to_value" />
 				<select class="wpuc-field-value wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select>				
 				</div>
 				
