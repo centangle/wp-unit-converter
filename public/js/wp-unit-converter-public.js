@@ -76,9 +76,16 @@
         if ( 0 == wpuc_converted_value ) {
           $('#wpuc_to_value').val( '' );
         } else {
-          $('#wpuc_to_value').val( wpuc_converted_value );
+            if ( 'temperature' != wpuc_temperature ) {
+              wpuc_converted_value = wpuc_converted_value.toFixed(2).toString().replace(/([^0-9.])+/g, '');
+              $('#wpuc_to_value').val( wpuc_converted_value );
+            
+            } else {
+              $('#wpuc_to_value').val( wpuc_converted_value );
+            }
         }
 
+        // fixed the temperature showing defalut values on either side
         if ( 'temperature' == wpuc_temperature ) {
           if ( '' == wpuc_value ) {
             $('#wpuc_to_value').val( '' );
@@ -102,13 +109,21 @@
         var wpuc_temperature = $("#converter-selection .wpuc-select").val();
         wpuc_converted_value = math.number(math.unit(wpuc_value, wpuc_to), wpuc_from);
         wpuc_converted_value = Number( wpuc_converted_value.toPrecision(14) );
-  
+
+        // removes 0 showing on either side of the input field if one field is empty  
         if ( 0 == wpuc_converted_value ) {
           $('#wpuc_from_value').val( '' );
         } else {
-          $('#wpuc_from_value').val( wpuc_converted_value );
+            if ( 'temperature' != wpuc_temperature ) {
+              wpuc_converted_value = wpuc_converted_value.toFixed(2).toString().replace(/([^0-9.])+/g, '');
+              $('#wpuc_from_value').val( wpuc_converted_value );
+            
+            } else {
+              $('#wpuc_from_value').val( wpuc_converted_value );
+            }
         }
 
+        // fixed the temperature showing defalut values on either side
         if ( 'temperature' == wpuc_temperature ) {
           if ( '' == wpuc_value ) {
             $('#wpuc_from_value').val( '' );
@@ -140,16 +155,21 @@
         var wpuc_converter_data = wpuc_metrics[converter];
         var wpuc_convert_options_array = wpuc_converter_data['select_box'];
         
-        var wpuc_convert_options;
+        var wpuc_convert_options = new Array();
 
         $.each( wpuc_convert_options_array, function( key, value ) {
           
-          wpuc_convert_options += '<option value="' + key + '">' + value + '</option>';
+          wpuc_convert_options.push('<option value="' + key + '">' + value + '</option>');
         });
 
         $("#wpuc_from_value").val("");
         $("#wpuc_to_value").val("");
-        $(".wpuc-field-value.wpuc-select").html(wpuc_convert_options);
+        $("#wpuc_from").html(wpuc_convert_options);
+
+        var wpuc_convert_options_reverse;
+        var wpuc_convert_options_reverse = wpuc_convert_options.reverse();
+
+        $("#wpuc_to").html(wpuc_convert_options_reverse);
 
       }
     });

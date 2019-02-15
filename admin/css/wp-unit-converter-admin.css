@@ -8,48 +8,44 @@
     display: inline-block;
 }
 
-#wpuc_submenu_page tbody tr th {
+#wpuc_submenu_page tr th {
     display: none;
 }
+
+#wpuc_submenu_page tr:first-child td {
+    padding-top: 0px;
+}
+
 
 /*
  * Shortcode Fields
  */
 
-.wpuc_shortcode_general {
-    display: flex;
-    flex-flow: column wrap;
-    text-align: center;
-    border: 1px solid gray;
-    margin: 0 auto;
+.wpuc_shortcode_display {
+    width: 300px;
 }
 
-.wpuc_shortcode_general_heading, .wpuc_shortcode_specific_heading {
+.wpuc_shortcode_select {
+    width: 100%;
+    height: 2.5em !important;
     margin: 0px;
-    border-bottom: 1px solid gray;
-    padding: .5em;
+    border: none;
+    border-bottom: 1px solid #F1F1F1;
+    box-shadow: none;
+    border-radius: 3px 3px 0px 0px;
 }
 
-.wpuc_shortcode_general_shortcode, .wpuc_shortcode_specific_shortcode {
-    padding: 1em;
-}
-
-.wpuc_shortcode_specifics {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.wpuc_shortcode_specific {
-    display: flex;
-    margin: 1em 0px;
-    justify-content: space-between;
-    width: 400px;
-    border: 1px solid gray;
-    flex-flow: column wrap;
+.wpuc_shortcode_display input {
+    width: 100%;
+    padding: 1em 5px;
+    margin: 0px;
+    border: none;
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: none;
+    background: white;
     text-align: center;
-    border: 1px solid gray;
 }
+
 
 
 /*
@@ -71,22 +67,10 @@
 .wpuc_orientation_options {
     display: flex;
     justify-content: space-between;
-    width: 250px;
+    width: 700px;
 }
 
 .wpuc_orientation_option {
     display: flex;
     align-items: center;
-}
-
-.wpuc_orientation_horizontal {
-    width: 70px;
-    height: 50px;
-    background-color: lightgray;
-}
-
-.wpuc_orientation_vertical {
-    width: 50px;
-    height: 70px;
-    background-color: lightgray;
 }

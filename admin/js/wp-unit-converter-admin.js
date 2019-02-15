@@ -29,4 +29,10 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$( function($){
+		$('.wpuc_shortcode_select').on('change', function() {
+			var _this = this.value;
+			$("#wpuc_shortcode_selected").val(_this);
+		});
+	});
 })( jQuery );

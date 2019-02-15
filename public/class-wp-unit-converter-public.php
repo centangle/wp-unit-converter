@@ -178,35 +178,46 @@ class Wp_Unit_Converter_Public {
 
 		$wpuc_convert_options_array = $wpuc_converter_data['select_box'];
 
-		$wpuc_convert_options = '';
+		$wpuc_convert_options = [];
 
 		foreach ($wpuc_convert_options_array as $key => $value) {
 
-			$wpuc_convert_options .= '<option value="' . $key . '">' . $value . '</option>';
-
+			$wpuc_convert_options[] = '<option value="' . $key . '">' . $value . '</option>';
 		}
 
 		$show .= '<div id="wpuc-converter-type">';
 
 		$show .= '<div class="wpuc-converter-form">
 		
-				<input type="hidden" name="wpuc_converter_type" value="' . $converter . '" id="wpuc_converter_type"/>
+					<input type="hidden" name="wpuc_converter_type" value="' . $converter . '" id="wpuc_converter_type"/>
 
-				<div class="wpuc-main-form">
+					<div class="wpuc-main-form">
 
-				<div class="wpuc-field">
-				<input  class="wpuc-field-value wpuc-input" maxlength="16" type="text" name="wpuc_value" value="" id="wpuc_from_value" />
-				<select class="wpuc-field-value wpuc-select" id="wpuc_from">' . $wpuc_convert_options . '</select>
-				</div>';
+						<div class="wpuc-field">
+							<input  class="wpuc-field-value wpuc-input" maxlength="14" type="text" name="wpuc_value" value="" id="wpuc_from_value" />';
 
-		$show .= '<div class="wpuc-equalizer"> = </div>';
+							$wpuc_array_to_string = '';
+							foreach ($wpuc_convert_options as $wpuc_key) {
+								$wpuc_array_to_string .= $wpuc_key;
+							}
+							
+		$show .=			'<select class="wpuc-field-value wpuc-select" id="wpuc_from">' . $wpuc_array_to_string . '</select>
+						</div>';
 
-		$show .= '<div class="wpuc-field">				
-				<input  class="wpuc-field-value wpuc-input" maxlength="16" type="text" name="wpuc_value" value="" id="wpuc_to_value" />
-				<select class="wpuc-field-value wpuc-select" id="wpuc_to">' . $wpuc_convert_options . '</select>				
-				</div>
+		$show .= 		'<div class="wpuc-equalizer"> = </div>';
+
+		$show .=		'<div class="wpuc-field">				
+							<input  class="wpuc-field-value wpuc-input" maxlength="14" type="text" name="wpuc_value" value="" id="wpuc_to_value" />';
+
+							$wpuc_convert_options_reversed = array_reverse( $wpuc_convert_options );
+							$wpuc_array_to_string_reversed = '';
+							foreach ($wpuc_convert_options_reversed as $wpuc_key) {
+								$wpuc_array_to_string_reversed .= $wpuc_key;
+							}
+		$show .=			'<select class="wpuc-field-value wpuc-select" id="wpuc_to">' . $wpuc_array_to_string_reversed . '</select>				
+						</div>
 				
-				</div>';
+					</div>';
 
 
 		$show .= '</div></div>';

@@ -101,32 +101,22 @@ class Wp_Unit_Converter_Register_Settings {
 		<h3 class="wpuc_shortcode_heading">WP Unit Converter Shorcodes</h3>
 		<h3 class="wpuc_shortcode_subheading">Choose any Metrics by shortcode to Display</h3>
 
-			<div class="wpuc_shortcode_general">
-					<h4 class="wpuc_shortcode_general_heading">WP Unit Converter Multiple Metrics</h4>
-					<pre class="wpuc_shortcode_general_shortcode">[wpuc_unit_converter]</pre>
-			</div>
+		<div class="wpuc_shortcode_display">
+			<select class="wpuc_shortcode_select">
+			<option value="[wpuc_unit_converter]">WP Unit Converter All Metrics</option>
+			<?php
+				foreach ($wpuc_metrics as $wpuc_key => $wpuc_value) {
+				?>
 
-			<div class="wpuc_shortcode_specifics">
+				<option value="<?php echo ($wpuc_value['shortcode']); ?>"><?php echo ($wpuc_value['title']); ?></option>
 
-		<?php
+				<?php
+				}
+				?>
+			</select>
 
-		foreach ($wpuc_metrics as $key => $value) {
-
-		?>
-
-			<div class="wpuc_shortcode_specific">
-					<h4 class="wpuc_shortcode_specific_heading"><?php echo $value['title']; ?></h4>
-					<pre class="wpuc_shortcode_specific_shortcode">[wpuc_unit_converter converter=<?php echo $key ?>]</pre>
-			</div>
-
-		<?php
-		
-		}
-
-		?>
-
-				</div>
-
+			<input  type="text" name="wpuc_shortcode_value" value="[wpuc_unit_converter]" id="wpuc_shortcode_selected" readonly />
+		</div>
 
 		<?php
 	}
@@ -143,12 +133,16 @@ class Wp_Unit_Converter_Register_Settings {
 
 				<div class="wpuc_orientation_option">
 					<input type="radio" name="wpuc_options[wpuc_orientation]" <?php checked( 'vertical', $wpuc_options['wpuc_orientation'], true ); ?> Value="vertical" />
-					<div class="wpuc_orientation_vertical"></div>
+					<div class="wpuc_orientation_vertical">
+						<img src=" <?php echo (plugins_url( '/wp-unit-converter/admin/images/wpuc_vertical_orientation.png')) ?> " alt="WP Unit Converter Vertical Orientation" width="300px" >
+					</div>
 				</div> <!-- wpuc_orientation_option -->
 
 				<div class="wpuc_orientation_option">
 					<input type="radio" name="wpuc_options[wpuc_orientation]" <?php checked( 'horizontal', $wpuc_options['wpuc_orientation'], true ); echo ( ( get_option( 'wpuc_options' ) ) ? '' : 'checked'); ?> Value="horizontal" />
-					<div class="wpuc_orientation_horizontal"></div>
+					<div class="wpuc_orientation_horizontal">
+						<img src="<?php echo (plugins_url( '/wp-unit-converter/admin/images/wpuc_horizontal_orientation.png' )) ?>" alt="WP Unit Converter Horizontal Orientation" width="300px" >
+					</div>
 				</div> <!-- wpuc_orientation_option -->
 
 			</div> <!-- wpuc_orientation_options -->
