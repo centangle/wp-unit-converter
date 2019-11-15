@@ -56,8 +56,8 @@ WP Unit Converter is based on following third-party resource:
 
 ## Changelog
 
-### 1.0.0
-* Initial release
-
 ### 1.0.1
 * Tested with the latest build
+
+### 1.0.0
+* Initial release
