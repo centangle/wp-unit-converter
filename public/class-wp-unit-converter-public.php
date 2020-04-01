@@ -103,7 +103,7 @@ class Wp_Unit_Converter_Public {
 
 		$wpuc_options = get_option( 'wpuc_options' );
 
-		wp_localize_script( 'wpuc_ajax_script', 'wpuc_js_obj', array( 'wpuc_metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ), 'wpuc_plugin_active' => class_exists( 'wp_unit_converter' ), 'wpuc_orientation' => $wpuc_options['wpuc_orientation'] ) );
+		wp_localize_script( 'wpuc_ajax_script', 'wpuc_js_obj', array( 'wpuc_metrics_json' => plugins_url( 'wp-unit-converter/includes/js/wpuc-metrics.json' ), 'wpuc_plugin_active' => class_exists( 'wp_unit_converter' ), 'wpuc_orientation' => ($wpuc_options && $wpuc_options['wpuc_orientation']) ? ($wpuc_options['wpuc_orientation']) : 'horizontal' ) );
 	}
 
 	/**

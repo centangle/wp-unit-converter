@@ -3,8 +3,8 @@ Contributors: centangle, shaampk1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YVZMWLU7UJEBU&currency_code=USD&source=url
 Tags: unit converter, measurement, metrics, shortcode
 Requires at least: 5.0
-Tested up to: 5.3
-Stable tag: 1.0.1
+Tested up to: 5.4
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ WP Unit Converter is based on following third-party resource:
 * Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
 
 ## Changelog
+
+### 1.0.2
+* Bug fix and tested with the latest build
 
 ### 1.0.1
 * Tested with the latest build
