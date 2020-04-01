@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              centangle.com
- * @since             1.0.2
+ * @since             1.0.1
  * @package           Wp_Unit_Converter
  *
  * @wordpress-plugin
  * Plugin Name:       WP Unit Converter
  * Plugin URI:        https://github.com/centangle/wp-unit-converter
  * Description:       WP Unit Converter let's you convert into different units of six different metrics.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Centangle Interactive
  * Author URI:        centangle.com
  * License:           GPL-2.0+
