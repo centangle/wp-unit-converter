@@ -98,7 +98,7 @@ class Wp_Unit_Converter_Register_Settings {
 
 		?>
 
-		<h3 class="wpuc_shortcode_heading">WP Unit Converter Shorcodes</h3>
+		<h3 class="wpuc_shortcode_heading">WP Unit Converter Shortcodes</h3>
 		<h3 class="wpuc_shortcode_subheading">Choose any Metrics by shortcode to Display</h3>
 
 		<div class="wpuc_shortcode_display">
