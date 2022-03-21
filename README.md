@@ -45,6 +45,9 @@ WP Unit Converter is distributed under the terms of GNU GPL2.
 
 ## Changelog
 
+### 1.0.5
+* Tested with the latest build
+
 ### 1.0.4
 * Tested with the latest build
 

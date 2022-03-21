@@ -23,13 +23,14 @@
 class Wp_Unit_Converter_Activator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
 	 *
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+
+		$wpuc_default_orientation = array( 'wpuc_orientation' => 'horizontal' );
+
+		update_option( 'wpuc_options', $wpuc_default_orientation );
 
 	}
 

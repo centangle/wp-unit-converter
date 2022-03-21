@@ -43,13 +43,13 @@ class Wp_Unit_Converter_Register_Settings {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -60,7 +60,7 @@ class Wp_Unit_Converter_Register_Settings {
 	 */
 	public function wpuc_options_submenu_page_fields() {
 
-		register_setting( 
+		register_setting(
 			'wpuc_options_submenu_page_reg_settings',
 			'wpuc_options'
 		);
@@ -71,19 +71,19 @@ class Wp_Unit_Converter_Register_Settings {
 			'',
 			'wpuc_options_submenu_page'
 		);
-	
+
 		add_settings_field(
 			'wpuc_options_submenu_page_field_shortcode',
 			'',
-			array($this, 'wpuc_options_submenu_page_field_shortcode_render_callback'),
+			array( $this, 'wpuc_options_submenu_page_field_shortcode_render_callback' ),
 			'wpuc_options_submenu_page',
 			'wpuc_options_submenu_page_section'
 		);
-	
+
 		add_settings_field(
 			'wpuc_options_submenu_page_field_orientation',
 			'',
-			array($this, 'wpuc_options_submenu_page_field_orientation_render_callback'),
+			array( $this, 'wpuc_options_submenu_page_field_orientation_render_callback' ),
 			'wpuc_options_submenu_page',
 			'wpuc_options_submenu_page_section'
 		);
@@ -105,14 +105,14 @@ class Wp_Unit_Converter_Register_Settings {
 			<select class="wpuc_shortcode_select">
 			<option value="[wpuc_unit_converter]">WP Unit Converter All Metrics</option>
 			<?php
-				foreach ($wpuc_metrics as $wpuc_key => $wpuc_value) {
+			foreach ( $wpuc_metrics as $wpuc_key => $wpuc_value ) {
 				?>
 
-				<option value="<?php echo ($wpuc_value['shortcode']); ?>"><?php echo ($wpuc_value['title']); ?></option>
+				<option value="<?php echo ( $wpuc_value['shortcode'] ); ?>"><?php echo ( $wpuc_value['title'] ); ?></option>
 
 				<?php
-				}
-				?>
+			}
+			?>
 			</select>
 
 			<input  type="text" name="wpuc_shortcode_value" value="[wpuc_unit_converter]" id="wpuc_shortcode_selected" readonly />
@@ -132,16 +132,21 @@ class Wp_Unit_Converter_Register_Settings {
 			<div class="wpuc_orientation_options">
 
 				<div class="wpuc_orientation_option">
-					<input type="radio" name="wpuc_options[wpuc_orientation]" <?php checked( 'vertical', $wpuc_options['wpuc_orientation'], true ); ?> Value="vertical" />
+					<input type="radio" name="wpuc_options[wpuc_orientation]" <?php checked( 'vertical', $wpuc_options['wpuc_orientation'], true ); ?> value="vertical" />
 					<div class="wpuc_orientation_vertical">
-						<img src=" <?php echo (plugins_url( '/wp-unit-converter/admin/images/wpuc_vertical_orientation.png')) ?> " alt="WP Unit Converter Vertical Orientation" width="300px" >
+						<img src=" <?php echo ( plugins_url( '/wp-unit-converter/admin/images/wpuc_vertical_orientation.png' ) ); ?> " alt="WP Unit Converter Vertical Orientation" width="300px" >
 					</div>
 				</div> <!-- wpuc_orientation_option -->
 
 				<div class="wpuc_orientation_option">
-					<input type="radio" name="wpuc_options[wpuc_orientation]" <?php checked( 'horizontal', $wpuc_options['wpuc_orientation'], true ); echo ( ( get_option( 'wpuc_options' ) ) ? '' : 'checked'); ?> Value="horizontal" />
+					<input type="radio" name="wpuc_options[wpuc_orientation]" 
+					<?php
+					checked( 'horizontal', $wpuc_options['wpuc_orientation'], true );
+					echo ( ( get_option( 'wpuc_options' ) ) ? '' : 'checked' );
+					?>
+					value="horizontal" />
 					<div class="wpuc_orientation_horizontal">
-						<img src="<?php echo (plugins_url( '/wp-unit-converter/admin/images/wpuc_horizontal_orientation.png' )) ?>" alt="WP Unit Converter Horizontal Orientation" width="300px" >
+						<img src="<?php echo ( plugins_url( '/wp-unit-converter/admin/images/wpuc_horizontal_orientation.png' ) ); ?>" alt="WP Unit Converter Horizontal Orientation" width="300px" >
 					</div>
 				</div> <!-- wpuc_orientation_option -->
 
@@ -149,7 +154,7 @@ class Wp_Unit_Converter_Register_Settings {
 
 		<div>
 		
-		<?php		
+		<?php
 	}
-	
+
 }

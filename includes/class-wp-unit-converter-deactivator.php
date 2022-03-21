@@ -23,9 +23,6 @@
 class Wp_Unit_Converter_Deactivator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
 	 *
 	 * @since    1.0.0
 	 */
